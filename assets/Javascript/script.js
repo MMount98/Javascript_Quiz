@@ -7,6 +7,7 @@ var questionEl = document.querySelector(".gameCard");
 var questionTitle = document.querySelector("#title");
 var optionBtns = document.querySelectorAll(".option");
 var timer = document.querySelector("#timer");
+var timerInterval;
 
 var currentQuesiton = 0;
 var wins = 0;
@@ -34,10 +35,10 @@ var questions = [
 //FUNCTIONS
 
 function startGame() {
+  clock();
   titleCard.setAttribute("class", "titleCard hidden");
   gameCard.setAttribute("class", "gameCard shown");
-  clock();
-  nextQuestion();
+  nextQuestion(false);
 }
 
 //Display both question and move through the array to display the next question
@@ -48,17 +49,26 @@ function nextQuestion(event) {
   for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
     optionBtns[i].textContent = questions[currentQuesiton].options[i];
   }
-  //Checks if what btn user clicked is right or wrong
-  if (event.target.textContent === questions[currentQuesiton].correct) {
-    console.log("correct");
-  } else {
-    countDown -= 15;
+  console.log(event);
+  if (event) {
+    //Checks if what btn user clicked is right or wrong
+    if (event.target.textContent === questions[currentQuesiton].correct) {
+      console.log("correct");
+    } else {
+      countDown -= 15;
+    }
+
+    currentQuesiton++;
+
+    if (currentQuesiton === questions.length) {
+      clearInterval(timerInterval);
+      endGame();
+    }
   }
-  currentQuesiton++;
 }
 
 function clock() {
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     countDown--;
     timer.textContent = "Time Remaining: " + countDown;
 
@@ -72,6 +82,8 @@ function clock() {
 function endGame() {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
+
+  localStorage.setItem("score", countDown);
 }
 
 startBtn.addEventListener("click", startGame);
