@@ -6,9 +6,11 @@ var startBtn = document.querySelector(".st-btn");
 var questionEl = document.querySelector(".gameCard");
 var questionTitle = document.querySelector("#title");
 var optionBtns = document.querySelectorAll(".option");
+var timer = document.querySelector("#timer");
 
 var wins = 0;
 var loses = 0;
+var countDown = 90;
 
 var questions = [
   {
@@ -33,6 +35,7 @@ var questions = [
 function startGame() {
   titleCard.setAttribute("class", "titleCard hidden");
   gameCard.setAttribute("class", "gameCard shown");
+  clock();
   nextQuestion();
 }
 
@@ -44,10 +47,29 @@ function nextQuestion(event) {
     optionBtns[i].textContent = questions[currentQuesiton].options[i]; //iterates over options array and adds options index value
     questionTitle.textContent = questions[currentQuesiton].title;
   }
-
+  //Checks if what btn user clicked is right or wrong
   if (event.target.textContent === questions[currentQuesiton].correct) {
-    console.log("hi");
+    console.log("correct");
+  } else {
+    console.log("Wrong");
   }
+}
+
+function clock() {
+  var timerInterval = setInterval(function () {
+    countDown--;
+    timer.textContent = "Time Remaining: " + countDown;
+
+    if (countDown === 0) {
+      clearInterval(timerInterval);
+      lostGame();
+    }
+  }, 1000);
+}
+
+function lostGame() {
+  gameCard.setAttribute("class", "gameCard hidden");
+  scoreBoard.setAttribute("class", "scoreBoard shown");
 }
 
 startBtn.addEventListener("click", startGame);
