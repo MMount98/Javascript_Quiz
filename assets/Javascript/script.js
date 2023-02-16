@@ -8,6 +8,7 @@ var questionTitle = document.querySelector("#title");
 var optionBtns = document.querySelectorAll(".option");
 var timer = document.querySelector("#timer");
 
+var currentQuesiton = 0;
 var wins = 0;
 var loses = 0;
 var countDown = 90;
@@ -41,18 +42,19 @@ function startGame() {
 
 //Display both question and move through the array to display the next question
 function nextQuestion(event) {
-  var currentQuesiton = 0;
-
+  //changes the h2 in DOM to match current question
+  questionTitle.textContent = questions[currentQuesiton].title;
+  //iterates over options array and adds options index value
   for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
-    optionBtns[i].textContent = questions[currentQuesiton].options[i]; //iterates over options array and adds options index value
-    questionTitle.textContent = questions[currentQuesiton].title;
+    optionBtns[i].textContent = questions[currentQuesiton].options[i];
   }
   //Checks if what btn user clicked is right or wrong
   if (event.target.textContent === questions[currentQuesiton].correct) {
     console.log("correct");
   } else {
-    console.log("Wrong");
+    countDown -= 15;
   }
+  currentQuesiton++;
 }
 
 function clock() {
@@ -62,12 +64,12 @@ function clock() {
 
     if (countDown === 0) {
       clearInterval(timerInterval);
-      lostGame();
+      endGame();
     }
   }, 1000);
 }
 
-function lostGame() {
+function endGame() {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
 }
