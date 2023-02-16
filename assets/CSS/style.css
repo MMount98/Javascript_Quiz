@@ -2,22 +2,36 @@
   box-sizing: border-box;
   font-size: 62.5%;
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 8rem;
-  margin: 1rem;
+.root {
 }
-
 section {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 6rem;
+}
+
+.option {
   font-size: 4rem;
-  border: .5rem solid rgb(61, 2, 92);
-  box-shadow: 1rem 2rem 1rem black;
-  margin: 4rem;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.st-btn {
+  font-size: 3rem;
+}
+
+.hidden {
+  display: none;
 }

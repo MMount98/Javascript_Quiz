@@ -5,32 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript Quiz</title>
+    <link rel="stylesheet" href="./assets/CSS/reset.css" />
     <link rel="stylesheet" href="./assets/CSS/style.css" />
   </head>
   <body>
-    <header>
-      <a id="leaderboard-link" href="#">Leaderboard</a>
-      <div data-state="hidden">Time Left: 90</div>
-    </header>
-    <section data-state="shown" id="container">
+    <section class="titleCard shown">
       <h1>Javascript Quiz!</h1>
       <p>
-        Welcome to a Javascript Quiz! This quiz will test your kndolge of
-        Javascript! In the next section you'll have 90 seconds to anwser all of
-        the quesiton that appear on the screen! Do be warned, if you awnser
-        incorectlly, your timer will loose 15 seconds! Are you ready?
+        Try your best to anwser the following quiz filled with questions all
+        about the coding language Javascript! Rules are as follow: You have 90
+        seconds to complete the quiz. If you miss a question, you loose 15
+        seconds. The quiz ends if you complete all the questions or run out of
+        time! Best of luck!
       </p>
-      <button id="Start">Start Quiz!</button>
+      <button class="st-btn">Start!</button>
     </section>
-    <section data-state="hidden" class="quesitons">
-      <div class="title">
-        <ul>
-          <li class="options"></li>
-          <li class="options"></li>
-          <li class="options"></li>
-          <li class="options"></li>
-        </ul>
-      </div>
+    <section class="gameCard hidden">
+      <h2>question</h2>
+      <button class="option">option1</button>
+      <button class="option">option2</button>
+      <button class="option">option3</button>
+      <button class="option">option4</button>
+    </section>
+    <section class="scoreBoard hidden">
+      <form>
+        <label for="intials">Enter intials:</label>
+        <input type="text" id="intials" name="intials" />
+      </form>
     </section>
     <script src="./assets/Javascript/script.js"></script>
   </body>

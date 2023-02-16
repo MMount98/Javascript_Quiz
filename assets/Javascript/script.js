@@ -1,27 +1,28 @@
-//Variable Declrations in Global Scope
-var titleEL = document.querySelector(".title");
-var  startBtn = document.querySelector("#Start");
+//DECLARED VARILBLE
+var titleCard = document.querySelector(".titleCard");
+var gameCard = document.querySelector(".gameCard");
+var scoreBoard = document.querySelector(".scoreBoard");
+var startBtn = document.querySelector(".st-btn");
+
+var wins = 0;
+var loses = 0;
+
 var questions = [
   {
-    title: "What Color is the sky?",
+    question: "What Color is the sky?",
     options: ["Blue", "Red", "Green", "Yellow"],
-    correct: 0,
-  },
-  {
-    title: "What Color is the grass?",
-    options: ["Blue", "Red", "Green", "Yellow"],
-    correct: 2,
-  },
-  {
-    title: "What Color is the sun?",
-    options: ["Blue", "Red", "Green", "Yellow"],
-    correct: 3,
+    right: "Blue",
   },
 ];
 
-function showQuestion() {}
+console.log(titleCard.dataset.state);
+//Functions
 
-startBtn.addEventListener("click", function(){
+function startGame() {
+  titleCard.setAttribute("class", "titleCard hidden");
+  gameCard.setAttribute("class", "gameCard shown");
+
   
-})
 
+}
+startBtn.addEventListener("click", startGame);
