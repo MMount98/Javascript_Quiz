@@ -9,7 +9,6 @@ var optionBtns = document.querySelectorAll(".option");
 
 var wins = 0;
 var loses = 0;
-var currentQuesiton = 0;
 
 var questions = [
   {
@@ -37,14 +36,18 @@ function startGame() {
   nextQuestion();
 }
 
-function nextQuestion() {
-
+//Display both question and move through the array to display the next question
+function nextQuestion(event) {
+  var currentQuesiton = 0;
 
   for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
     optionBtns[i].textContent = questions[currentQuesiton].options[i]; //iterates over options array and adds options index value
     questionTitle.textContent = questions[currentQuesiton].title;
   }
-  
+
+  if (event.target.textContent === questions[currentQuesiton].correct) {
+    console.log("hi");
+  }
 }
 
 startBtn.addEventListener("click", startGame);
