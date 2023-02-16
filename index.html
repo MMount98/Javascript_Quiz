@@ -12,7 +12,7 @@
       <a id="leaderboard-link" href="#">Leaderboard</a>
       <div data-state="hidden">Time Left: 90</div>
     </header>
-    <section id="container">
+    <section data-state="shown" id="container">
       <h1>Javascript Quiz!</h1>
       <p>
         Welcome to a Javascript Quiz! This quiz will test your kndolge of
@@ -20,8 +20,18 @@
         the quesiton that appear on the screen! Do be warned, if you awnser
         incorectlly, your timer will loose 15 seconds! Are you ready?
       </p>
-      <button>Start Quiz!</button>
+      <button id="Start">Start Quiz!</button>
     </section>
+    <section data-state="hidden" class="quesitons">
+      <div class="title">
+        <ul>
+          <li class="options"></li>
+          <li class="options"></li>
+          <li class="options"></li>
+          <li class="options"></li>
+        </ul>
+      </div>
+    </section>
+    <script src="./assets/Javascript/script.js"></script>
   </body>
-  <script src="./assets/Javascript/script.js"></script>
 </html>
