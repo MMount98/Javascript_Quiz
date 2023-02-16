@@ -9,22 +9,23 @@ var optionBtns = document.querySelectorAll(".option");
 
 var wins = 0;
 var loses = 0;
+var currentQuesiton = 0;
 
 var questions = [
   {
     title: "What Color is the sky?",
     options: ["Blue", "Red", "Green", "Yellow"],
-    right: "Blue",
+    correct: "Blue",
   },
   {
     title: "What is 2+2?",
     options: ["4", "5", "6", "7"],
-    right: "4",
+    correct: "4",
   },
   {
     title: "What is written on the Ceiling",
     options: ["Gulllable", "Hi", "im tired", "ahhhhh"],
-    right: "Gulllable",
+    correct: "Gulllable",
   },
 ];
 
@@ -37,13 +38,13 @@ function startGame() {
 }
 
 function nextQuestion() {
-  var randomQuestion = Math.floor(Math.random() * questions.length);
-
-  questionTitle.textContent = questions[randomQuestion].title;
-
-  for (var i = 0; i < questions[randomQuestion].options.length; i++) {
-    optionBtns[i].textContent = questions[randomQuestion].options[i]; //iterates over options array and adds options index value
+  for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
+    optionBtns[i].textContent = questions[currentQuesiton].options[i]; //iterates over options array and adds options index value
+    questionTitle.textContent = questions[currentQuesiton].title;
   }
+  console.log("hi");
 }
 
 startBtn.addEventListener("click", startGame);
+
+gameCard.addEventListener("click", nextQuestion);
