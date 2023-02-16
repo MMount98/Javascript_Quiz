@@ -38,11 +38,13 @@ function startGame() {
 }
 
 function nextQuestion() {
+
+
   for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
     optionBtns[i].textContent = questions[currentQuesiton].options[i]; //iterates over options array and adds options index value
     questionTitle.textContent = questions[currentQuesiton].title;
   }
-  console.log("hi");
+  
 }
 
 startBtn.addEventListener("click", startGame);

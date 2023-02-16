@@ -6,10 +6,18 @@
 }
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: gray;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 3rem;
 }
 section {
   display: flex;
