@@ -4,12 +4,22 @@
 }
 .root {
 }
-section {
+body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: gray;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  width: 90rem;
+  max-width: 70%;
+  color: white;
+  background-color: blue;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 
 h1 {
