@@ -1,37 +1,101 @@
-//DECLARED VARILBLE
+//DECLARED VARILBLES
+//Variblies with Refrence to DOM
 var titleCard = document.querySelector(".titleCard");
 var gameCard = document.querySelector(".gameCard");
 var scoreBoard = document.querySelector(".finalScreen");
 var startBtn = document.querySelector(".st-btn");
 var optionBtns = document.querySelectorAll(".option");
 var submitBtn = document.querySelector(".Submit");
+var resartBtn = document.querySelector(".reset");
 var questionEl = document.querySelector(".gameCard");
 var questionTitle = document.querySelector("#title");
 var timer = document.querySelector("#timer");
 var displayScore = document.querySelector("#finalScore");
+var displayWins = document.querySelector("#totalWins");
+var displayLosses = document.querySelector("#totalloss");
+//Variblies for placeholders
 var timerInterval;
 var highScore = [];
-
 var currentQuesiton = 0;
 var wins = 0;
 var loses = 0;
 var countDown = 90;
-
 var questions = [
   {
-    title: "What Color is the sky?",
-    options: ["Blue", "Red", "Green", "Yellow"],
-    correct: "Blue",
+    title: "Inside which HTML element do we put the JavaScript?",
+    options: ["<javascript>", "<scripting>", "<script>", "<js>"],
+    correct: "<script>",
   },
   {
-    title: "What is 2+2?",
-    options: ["4", "5", "6", "7"],
-    correct: "4",
+    title:
+      "What is the correct syntax for referring to an external script called? ",
+    options: [
+      "<script href = (file.js)>",
+      "script href = (file.js) ",
+      "<script src = (file.js)>",
+      "add = (file.js)",
+    ],
+    correct: "<script src = (file.js)>",
   },
   {
-    title: "What is written on the Ceiling",
-    options: ["Gulllable", "Hi", "im tired", "ahhhhh"],
-    correct: "Gulllable",
+    title: "How to display an Alert?",
+    options: ["display()", "alert()", "notify()", "tellUser()"],
+    correct: "alert()",
+  },
+  {
+    title: "Which of the following is correct?",
+    options: [
+      "function myFunction()",
+      "myFunction()",
+      "function:myFunction()",
+      "function = myFunction()",
+    ],
+    correct: "function myFunction()",
+  },
+  {
+    title: "How do you call a Function?",
+    options: [
+      "active.myFunction()",
+      "myFunction.call",
+      "myFunction()",
+      "Get their number first",
+    ],
+    correct: "myFunction()",
+  },
+  {
+    title: "How to add a Comment in Javascript?",
+    options: [
+      "<!--Is this it?-->",
+      "comment(No this is it)",
+      "Just type it in, Duh",
+      "//Pick Me",
+    ],
+    correct: "//Pick Me",
+  },
+  {
+    title: "What do you wrap an array in?",
+    options: ["[]", "{}", "||", "wrapping paper"],
+    correct: "[]",
+  },
+  {
+    title: "How do you declare a variable?",
+    options: ["variable = myName", "var myName", "myName()", "myName.variable"],
+    correct: "var myName",
+  },
+  {
+    title: "Which operator is used to assign a value to a variable?",
+    options: ["*", "->", "=", "+"],
+    correct: "=",
+  },
+  {
+    title: "How do you set an attribute in JavaScript?",
+    options: [
+      ".setAttribute()",
+      ".attribute()",
+      ".styled()",
+      ".settingAttribute()",
+    ],
+    correct: ".setAttribute()",
   },
 ];
 
@@ -84,6 +148,11 @@ function endGame() {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
   displayScore.textContent = countDown;
+  if (countDown > 0) {
+    wins++;
+  } else if (countDown <= 0) loses++;
+  displayWins.textContent = "Total Wins: " + wins;
+  displayLosses.textContent = "Total Losses: " + loses;
 }
 
 function storeInfo(event) {
@@ -103,8 +172,17 @@ function storeInfo(event) {
   document.querySelector("#intials").value = " ";
 }
 
+function resartGame() {
+  titleCard.setAttribute("class", "titleCard shown");
+  scoreBoard.setAttribute("class", "scoreBoard hidden");
+  countDown = 90;
+  currentQuesiton = 0;
+}
+
 startBtn.addEventListener("click", startGame);
 
 gameCard.addEventListener("click", nextQuestion);
 
 submitBtn.addEventListener("click", storeInfo);
+
+resartBtn.addEventListener("click", resartGame);
