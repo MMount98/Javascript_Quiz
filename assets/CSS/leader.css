@@ -3,11 +3,27 @@
   font-size: 62.5%;
 }
 
-header,
+header {
+  width: 100%;
+  font-size: 3rem;
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 a {
-  font-size: 8rem;
-  list-style: none;
+  font-size: 3rem;
   text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+a:hover{ 
+    color:goldenrod;
+}
+
+body {
+  background-color: rgb(26, 25, 25);
 }
 
 section {
@@ -16,5 +32,21 @@ section {
   justify-content: center;
   align-items: center;
   font-size: 8rem;
+  background-color: rgb(89, 44, 128);
 }
 
+h1 {
+  color: white;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(126, 109, 140);
+}
+
+ul {
+  font-size: 8rem;
+  background-color: white;
+  padding: 5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  list-style: none;
+}
