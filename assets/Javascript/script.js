@@ -10,6 +10,7 @@ var questionTitle = document.querySelector("#title");
 var timer = document.querySelector("#timer");
 var displayScore = document.querySelector("#finalScore");
 var timerInterval;
+var highScore = [];
 
 var currentQuesiton = 0;
 var wins = 0;
@@ -40,15 +41,13 @@ function startGame() {
   clock();
   titleCard.setAttribute("class", "titleCard hidden");
   gameCard.setAttribute("class", "gameCard shown");
-  nextQuestion(false);
+  nextQuestion();
 }
 
 //Display both question and move through the array to display the next question
 function nextQuestion(event) {
   if (event) {
-    //Checks if what btn user clicked is right or wrong
     if (event.target.textContent === questions[currentQuesiton].correct) {
-      console.log("correct");
     } else {
       countDown -= 15;
     }
@@ -84,20 +83,24 @@ function clock() {
 function endGame() {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
-  localStorage.setItem("score", countDown);
-  displayScore.textContent = localStorage.getItem("score");
+  displayScore.textContent = countDown;
 }
 
 function storeInfo(event) {
   event.preventDefault();
-  console.log(event);
   var initals = document.querySelector("#intials").value;
-  console.log(initals);
+  var storedScore = initals + ":" + countDown;
 
-  var setScore = {
+  var storedScore1 = {
     initals: initals,
-    score: score,
+    score: countDown,
   };
+
+  highScore.push(storedScore1);
+
+  localStorage.setItem("highScores", JSON.stringify(highScore));
+
+  document.querySelector("#intials").value = " ";
 }
 
 startBtn.addEventListener("click", startGame);
@@ -105,28 +108,3 @@ startBtn.addEventListener("click", startGame);
 gameCard.addEventListener("click", nextQuestion);
 
 submitBtn.addEventListener("click", storeInfo);
-
-//POSSIBLE SOLUTION TO DBLCLICK ISSUE
-// console.log(event);
-// console.log(currentQuesiton);
-// if (event) {
-//   //Checks if what btn user clicked is right or wrong
-//   if (event.target.textContent === questions[currentQuesiton].correct) {
-//     console.log("correct");
-//   } else {
-//     countDown -= 15;
-//   }
-
-//   currentQuesiton++;
-
-//   if (currentQuesiton === questions.length) {
-//     clearInterval(timerInterval);
-//     endGame();
-//   }
-// }
-// //changes the h2 in DOM to match current question
-// questionTitle.textContent = questions[currentQuesiton].title;
-// //iterates over options array and adds options index value
-// for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
-//   optionBtns[i].textContent = questions[currentQuesiton].options[i];
-// }
