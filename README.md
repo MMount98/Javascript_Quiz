@@ -2,7 +2,7 @@
 
 ## Goal
 
-    The goal of this project was to test my javascript fundementals. Taking what I learned from in class and create an interactive quiz that will test the users knowdelge of the coding language Javascript. It will run thorugh a set of questions with multiple choice and notify the user if they had gotten it correct or incorrect. Finally, it will save the users score in the local storage and have a leaderboard to show the top winner.
+The goal of this project was to test my javascript fundementals. Taking what I learned from in class and create an interactive quiz that will test the users knowdelge of the coding language Javascript. It will run thorugh a set of questions with multiple choice and notify the user if they had gotten it correct or incorrect. Finally, it will save the users score in the local storage and have a leaderboard to show the top winner.
 
 ## User Story
 
