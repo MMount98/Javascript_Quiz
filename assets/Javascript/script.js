@@ -3,9 +3,10 @@ var titleCard = document.querySelector(".titleCard");
 var gameCard = document.querySelector(".gameCard");
 var scoreBoard = document.querySelector(".scoreBoard");
 var startBtn = document.querySelector(".st-btn");
+var optionBtns = document.querySelectorAll(".option");
+var submitBtn = document.querySelector(".Submit");
 var questionEl = document.querySelector(".gameCard");
 var questionTitle = document.querySelector("#title");
-var optionBtns = document.querySelectorAll(".option");
 var timer = document.querySelector("#timer");
 var displayScore = document.querySelector("#finalScore");
 var timerInterval;
@@ -44,13 +45,6 @@ function startGame() {
 
 //Display both question and move through the array to display the next question
 function nextQuestion(event) {
-  //changes the h2 in DOM to match current question
-  questionTitle.textContent = questions[currentQuesiton].title;
-  //iterates over options array and adds options index value
-  for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
-    optionBtns[i].textContent = questions[currentQuesiton].options[i];
-  }
-  console.log(event);
   if (event) {
     //Checks if what btn user clicked is right or wrong
     if (event.target.textContent === questions[currentQuesiton].correct) {
@@ -58,13 +52,19 @@ function nextQuestion(event) {
     } else {
       countDown -= 15;
     }
-
     currentQuesiton++;
 
     if (currentQuesiton === questions.length) {
       clearInterval(timerInterval);
       endGame();
+      storeInfo();
     }
+  }
+  //changes the h2 in DOM to match current question
+  questionTitle.textContent = questions[currentQuesiton].title;
+  //iterates over options array and adds options index value
+  for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
+    optionBtns[i].textContent = questions[currentQuesiton].options[i];
   }
 }
 
@@ -76,6 +76,7 @@ function clock() {
     if (countDown === 0) {
       clearInterval(timerInterval);
       endGame();
+      storeInfo();
     }
   }, 1000);
 }
@@ -83,14 +84,27 @@ function clock() {
 function endGame() {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
-
   localStorage.setItem("score", countDown);
   displayScore.textContent = localStorage.getItem("score");
+}
+
+function storeInfo(event) {
+  event.preventDefault();
+  console.log(event);
+  var initals = document.querySelector("#intials").value;
+  console.log(initals);
+
+  var setScore = {
+    initals: initals,
+    score: score,
+  };
 }
 
 startBtn.addEventListener("click", startGame);
 
 gameCard.addEventListener("click", nextQuestion);
+
+submitBtn.addEventListener("click", storeInfo);
 
 //POSSIBLE SOLUTION TO DBLCLICK ISSUE
 // console.log(event);
