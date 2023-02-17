@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+header,
+a {
+  font-size: 8rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 8rem;
+}
