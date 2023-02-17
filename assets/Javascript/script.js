@@ -19,7 +19,7 @@ var highScore = [];
 var currentQuesiton = 0;
 var wins = 0;
 var loses = 0;
-var countDown = 90;
+var countDown = 180;
 var questions = [
   {
     title: "Inside which HTML element do we put the JavaScript?",
@@ -112,7 +112,9 @@ function startGame() {
 function nextQuestion(event) {
   if (event) {
     if (event.target.textContent === questions[currentQuesiton].correct) {
+      gameCard.setAttribute("class", "gameCard shown correct");
     } else {
+      gameCard.setAttribute("class", "gameCard shown wrong");
       countDown -= 15;
     }
     currentQuesiton++;

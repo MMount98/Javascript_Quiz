@@ -90,3 +90,11 @@ button {
 .hidden {
   display: none;
 }
+
+.correct {
+  background-color: rgb(27, 77, 27);
+}
+
+.wrong {
+  background-color: rgb(136, 47, 47);
+}
