@@ -1,7 +1,7 @@
 //DECLARED VARILBLE
 var titleCard = document.querySelector(".titleCard");
 var gameCard = document.querySelector(".gameCard");
-var scoreBoard = document.querySelector(".scoreBoard");
+var scoreBoard = document.querySelector(".finalScreen");
 var startBtn = document.querySelector(".st-btn");
 var optionBtns = document.querySelectorAll(".option");
 var submitBtn = document.querySelector(".Submit");

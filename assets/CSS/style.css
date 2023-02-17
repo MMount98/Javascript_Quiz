@@ -3,6 +3,8 @@
   font-size: 62.5%;
 }
 .root {
+  --quizTheme:rgb(89, 44, 128);
+  --bg-color:rgb(35, 32, 32);
 }
 body {
   display: flex;
@@ -10,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: gray;
+  background-color: rgb(26, 25, 25);
 }
 
 header {
@@ -18,6 +20,13 @@ header {
   justify-content: space-between;
   width: 100%;
   font-size: 3rem;
+  background-color: white;
+  padding:1.5rem;
+  box-shadow: 0 .5rem 0 .75rem;
+}
+
+a {
+  text-decoration: none;
 }
 section {
   display: flex;
@@ -25,18 +34,26 @@ section {
   width: 90rem;
   max-width: 70%;
   color: white;
-  background-color: blue;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  background-color: rgb(89, 44, 128);
+  padding: 4rem;
   margin: 5rem;
+  border-radius: 0.5rem;
+  box-shadow: .5rem .5rem;
+}
+
+form {
+  font-size: 2rem;
+  padding: 1rem;
 }
 
 h1 {
   font-size: 6rem;
+  margin-bottom: 1rem;;
 }
 
 h2 {
   font-size: 6rem;
+  margin: 1rem;
 }
 
 .option {
@@ -45,10 +62,29 @@ h2 {
 
 p {
   font-size: 2rem;
+  margin: 1.25rem 0;
 }
 
-.st-btn {
+ .st-btn button {
   font-size: 3rem;
+  border-radius: .5rem;
+}
+
+button {
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  margin: .25rem;
+}
+
+.stats {
+  border: .25rem solid white;
+  margin: 4rem;
+  align-self: flex-start;
+  font-size: 4rem;
+  color: black;
+  background-color: white;
+  padding: 2rem;
+  border-radius: .5rem;
 }
 
 .hidden {
