@@ -101,15 +101,15 @@ var questions = [
 
 //FUNCTIONS
 
-function startGame() {
+const startGame = () => {
   clock();
   titleCard.setAttribute("class", "titleCard hidden");
   gameCard.setAttribute("class", "gameCard shown");
   nextQuestion();
-}
+};
 
 //Display both question and move through the array to display the next question
-function nextQuestion(event) {
+const nextQuestion = (event) => {
   if (event) {
     if (event.target.textContent === questions[currentQuesiton].correct) {
       gameCard.setAttribute("class", "gameCard shown correct");
@@ -131,9 +131,9 @@ function nextQuestion(event) {
   for (var i = 0; i < questions[currentQuesiton].options.length; i++) {
     optionBtns[i].textContent = questions[currentQuesiton].options[i];
   }
-}
+};
 
-function clock() {
+const clock = () => {
   timerInterval = setInterval(function () {
     countDown--;
     timer.textContent = "Time Remaining: " + countDown;
@@ -144,9 +144,9 @@ function clock() {
       storeInfo();
     }
   }, 1000);
-}
+};
 
-function endGame() {
+const endGame = () => {
   gameCard.setAttribute("class", "gameCard hidden");
   scoreBoard.setAttribute("class", "scoreBoard shown");
   displayScore.textContent = countDown;
@@ -155,9 +155,9 @@ function endGame() {
   } else if (countDown <= 0) loses++;
   displayWins.textContent = "Total Wins: " + wins;
   displayLosses.textContent = "Total Losses: " + loses;
-}
+};
 
-function storeInfo(event) {
+const storeInfo = (event) => {
   event.preventDefault();
   var initals = document.querySelector("#intials").value;
   var storedScore = initals + ":" + countDown;
@@ -172,14 +172,14 @@ function storeInfo(event) {
   localStorage.setItem("highScores", JSON.stringify(highScore));
 
   document.querySelector("#intials").value = " ";
-}
+};
 
-function resartGame() {
+const resartGame = () => {
   titleCard.setAttribute("class", "titleCard shown");
   scoreBoard.setAttribute("class", "scoreBoard hidden");
   countDown = 90;
   currentQuesiton = 0;
-}
+};
 
 startBtn.addEventListener("click", startGame);
 
